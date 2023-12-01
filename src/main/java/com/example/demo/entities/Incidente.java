@@ -18,20 +18,31 @@ public class Incidente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String descripcionProblema;
+    private String descripcion;
+
     @Column
-    private String tipoProblema;
-    @Column(name = "fecha estimada")
-    private Date fechaResolucion;
+    private String tipo;
+
+    @Column
     @Enumerated(EnumType.STRING)
-    private EstadoIncidente estadoIncidente;
-    @ManyToOne
-    @JoinColumn(name = "tecnicoCalificado_id")
-    private Tecnico tecnicoCalificado;
+    private Estado estado;
+
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+
     @ManyToOne
     @JoinColumn(name = "operador_id")
     private Operador operador;
+
+    @ManyToOne
+    @JoinColumn(name = "servicio_id")
+    private Servicio servicio;
+
+    @ManyToOne
+    @JoinColumn(name = "tecnicoCalificado_id")
+    private Tecnico tecnicoCalificado;
+
+    @OneToOne
+    private Reporte reporte;
 }

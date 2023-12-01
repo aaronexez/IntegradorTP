@@ -1,5 +1,5 @@
 package com.example.demo.entities;
 
-public enum EstadoIncidente {
+public enum Estado {
     ABIERTO, ASIGNADO, RESUELTO
 }

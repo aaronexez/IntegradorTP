@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Map;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,13 +17,20 @@ public class Tecnico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
+
     @Column
-    private List<String> especialdades;
-    @ElementCollection
-    private Map<String,Integer> tiempoEstimado;
+    private String nombre;
+
+    @Column
+    private String especialdad;
+
     @Column
     private Integer incidentesPendientes;
-    @OneToMany(mappedBy = "tecnico", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "tecnicoCalificado", cascade = CascadeType.ALL)
     private List<Incidente> incidentes;
+
+    @OneToOne
+    private Reporte reporte;
+
 }

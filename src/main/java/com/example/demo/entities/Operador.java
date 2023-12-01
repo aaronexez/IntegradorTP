@@ -17,6 +17,11 @@ public class Operador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @OneToMany(mappedBy = "operador",cascade = CascadeType.ALL)
     private List<Incidente> incidente;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private TiempoEstimado tiempoEstimado;
 }

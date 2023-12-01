@@ -11,10 +11,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ReporteDiario {
+public class Reporte {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+
+    @OneToOne(mappedBy = "reporte")
+    @JoinColumn(name = "tecnico_id")
     private Tecnico tecnico;
+
+    @OneToOne
+    @JoinColumn(name = "incidente_id")
+    private Incidente incidente;
 }

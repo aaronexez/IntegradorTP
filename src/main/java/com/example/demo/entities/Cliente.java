@@ -16,10 +16,13 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column
     private String razonSocial;
+
     @Column
     private Double CUIT;
+
     @Column
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Servicio> servicios;
